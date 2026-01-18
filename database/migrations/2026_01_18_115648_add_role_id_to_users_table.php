@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')
-                ->nullable()
                 ->constrained()
-                ->nullOnDelete()
+                ->restrictOnDelete()
                 ->after('id');
             $table->boolean('is_active')->default(true)->after('password');
         });
