@@ -11,6 +11,19 @@
 
 FashionConnect is a Laravel application for a fashion collaboration and networking platform.
 
+## Step 2: Models & Relationships
+
+- **Roles & users**: `Role` has many `User` records; each `User` belongs to a role.
+- **Profiles**: `User` has one `Profile` (1:1).
+- **Posts & engagement**: `User` has many `Post`, `Like`, and `Comment` records. Each post owns many likes and comments.
+- **Follows**: users follow other users via the `follows` pivot table (self-referential many-to-many).
+- **Jobs & applications**: `User` (designer) has many `Job` records; each job has many `JobApplication` records.
+- **Verifications**: `User` has many `Verification` records with start/end dates.
+- **OTPs**: `User` has many `Otp` records used for registration/reset flows.
+- **Payments**: `Payment` belongs to a user and polymorphically attaches to billable records (jobs or verifications).
+- **Reports**: `Report` belongs to a reporter and polymorphically targets reportable records.
+- **Messages**: `User` has many sent and received `Message` records.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
